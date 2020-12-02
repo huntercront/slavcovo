@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Color on Scroll</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nulled.css">
+    <link rel="stylesheet" href="./css/inportant-slyle.css">
+
+    <style>
+        body {
+            background-color: #FDE74C;
+            transition: all 1s ease-in;
+            padding: 50px;
+            color: #111;
+            font-family: sans-serif;
+            line-height: 32px;
+            font-size: 18px;
+        }
+        
+        h1 {
+            font-family: sans-serif;
+        }
+        
+        .colorOne {
+            background-color: #9BC53D;
+            color: #000;
+        }
+        
+        .colorTwo {
+            background-color: #FFF;
+            color: #000;
+        }
+        
+        #mainContent {
+            width: 420px;
+            margin: 0 auto;
+        }
+        
+        #mainContent p {
+            padding: 20px;
+        }
+        
+        #mainContent #firstBox {
+            font-weight: bold;
+            transform: translate3d(-30px, 0, 0);
+            transition: all .5s ease-out;
+            opacity: 0;
+        }
+        
+        #mainContent #firstBox.active {
+            background-color: #333;
+            color: #FFF;
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+        
+        #mainContent #secondBox {
+            transition: all .2s ease-in-out;
+            transform: translate3d(0, 30px, 0);
+            opacity: 0;
+        }
+        
+        #mainContent #secondBox.active {
+            background-color: #1581AF;
+            color: #FFF;
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+        
+        #mainContent ol li {
+            padding-left: 7px;
+            margin-bottom: 15px;
+            transition: all .2s ease-in-out;
+            transform: translate3d(20px, 0, 0);
+            opacity: 0;
+        }
+        
+        #mainContent ol li.active {
+            transform: translate3d(0px, 0, 0);
+            opacity: 1;
+        }
+        
+        .wave-inner {
+            height: 100%;
+            bottom: -1px;
+            position: relative;
+        }
+        
+        .wave-blur {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            backdrop-filter: blur(40px);
+        }
+        
+        .wave {
+            background: url('./img/wave.svg');
+            position: absolute;
+            left: 0;
+            top: -10px;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat no-repeat;
+            background-position: 0 top;
+            transform-origin: top left;
+        }
+        
+        .wave-2 {
+            background: url('./img/wave-2.svg');
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat no-repeat;
+            background-position: 0 bottom;
+            transform-origin: bottom left;
+        }
+        
+        .wave {
+            animation: move_wave 15s linear infinite alternate;
+        }
+        
+        .wave-2 {
+            animation: move_wave 35s 5s linear infinite alternate;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainContent">
+        <h1>Scroll Down</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis massa a arcu efficitur suscipit vehicula et risus.</p>
+        <ol id="myList">
+            <li class="animate">Nam sagittis est non enim ultrices elementum. </li>
+            <li class="animate">Sed id ligula sed mi tempor ornare.</li>
+            <li class="animate">Aenean feugiat risus eget sagittis volutpat. Proin quis orci a metus lacinia auctor eget id nisi.</li>
+            <li class="animate">Donec pulvinar nunc feugiat semper consequat.</li>
+            <li class="animate">Etiam cursus justo eget libero gravida, nec faucibus mauris posuere.</li>
+            <li class="animate">In nec sem id libero egestas cursus vel a urna.</li>
+            <li class="animate">Fusce pulvinar arcu eu lobortis egestas. Maecenas eleifend felis ut urna consectetur, et pellentesque mi molestie.</li>
+            <li class="animate">Aliquam ut felis venenatis, dapibus ante non, gravida nulla.</li>
+            <li class="animate">Donec consectetur quam in urna commodo, sed aliquet metus vehicula.</li>
+            <li class="animate">Mauris eget est sit amet felis eleifend sagittis non id nulla.</li>
+        </ol>
+        <p id="firstBox" class="animate">Phasellus tortor nisl, dapibus at posuere sed, tempor in massa. Pellentesque eu sodales orci, finibus congue libero. Mauris molestie bibendum posuere.</p>
+        <p>Nunc blandit varius sapien quis ultrices. Vestibulum et consequat augue. Pellentesque et maximus nisl, sit amet dictum ante.</p>
+        <p id="secondBox" class="animate">Nullam magna augue, consequat eu augue ut, volutpat fringilla est. Ut commodo ac magna vulputate dictum.</p>
+    </div>
+    <div class="cta-block" class="animate">
+        <div class="wave-balock">
+            <div class="wave-inner">
+                <div class="wave"></div>
+                <div class="wave-2"></div>
+                <div class="wave-blur"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="cta-row-button c-c">
+                    <button class="cta-button">Let’s talk</button>
+                </div>
+                <p class="cta-text light-text centured--title">Or continue scrolling down to learn all the features and terms</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var isScrolling = false;
+        window.addEventListener("scroll", throttleScroll, false);
+
+        function throttleScroll(e) {
+            if (isScrolling == false) {
+                window.requestAnimationFrame(function() {
+                    scrolling(e);
+                    isScrolling = false;
+                });
+            }
+            isScrolling = true;
+        }
+
+        document.addEventListener("DOMContentLoaded", scrolling, false);
+
+        var listItems = document.querySelectorAll(".animate");
+
+        function scrolling(e) {
+
+            for (var i = 0; i < listItems.length; i++) {
+                var listItem = listItems[i];
+
+                if (isPartiallyVisible(listItem)) {
+                    listItem.classList.add("active");
+                }
+            }
+        }
+
+        function isPartiallyVisible(el) {
+            var elementBoundary = el.getBoundingClientRect();
+
+            var top = elementBoundary.top;
+            var bottom = elementBoundary.bottom;
+            var height = elementBoundary.height;
+
+            return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+        }
+
+        function isFullyVisible(el) {
+            var elementBoundary = el.getBoundingClientRect();
+            var top = elementBoundary.top;
+            var bottom = elementBoundary.bottom;
+            return ((top >= 0) && (bottom <= window.innerHeight));
+        }
+    </script>
+</body>
+
+</html>
