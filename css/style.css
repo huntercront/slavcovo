@@ -140,6 +140,12 @@
     margin-bottom: 2rem;
 }
 
+@media (max-width: 479px) {
+    .stori {
+        margin-top: 2rem;
+    }
+}
+
 
 /* contacts */
 
@@ -384,5 +390,8 @@ ul.footer-links {
     }
     .footer-links li.phone {
         order: 0;
+    }
+    .contacts {
+        margin-top: 2rem;
     }
 }

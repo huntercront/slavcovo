@@ -50,7 +50,7 @@ Loader.prototype = {
 
 var l = new Loader();
 l.require([
-
+        "../js/scroll.js",
         "../js/zuck.min.js",
         "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js",
         "https://api-maps.yandex.ru/2.1/?apikey=93fece7a-9fe4-47c6-80de-eaea41ec7d4a&lang=ru_RU"
@@ -157,51 +157,52 @@ l.require([
                     "Зана костра",
                     "",
                     timestamp(), [
-                        ["Flame-1", "photo", 4, "../img/stories/flame/about-flame-1.jpg", '', false, false, timestamp()],
-                        ["Flame-2", "photo", 4, "../img/stories/flame/about-flame-2.jpg", '', false, false, timestamp()],
-                        ["Flame-3", "photo", 4, "../img/stories/flame/about-flame-3.jpg", '', false, false, timestamp()],
-                        ["Flame-4", "photo", 4, "../img/stories/flame/about-flame-4.jpg", '', false, false, timestamp()],
-                        ["Flame-5", "photo", 4, "../img/stories/flame/about-flame-5.jpg", '', false, false, timestamp()]
-                    ]
-                ),
-                Zuck.buildTimelineItem(
-                    "gorillaz",
-                    "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/2.jpg",
-                    "Gorillaz",
-                    "",
-                    timestamp(), [
-                        ["gorillaz-1", "video", 0, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.mp4", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.jpg", '', false, false, timestamp()],
-                        ["gorillaz-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", '', false, false, timestamp()],
-                    ]
-                ),
-                Zuck.buildTimelineItem(
-                    "ladygaga",
-                    "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/3.jpg",
-                    "Lady Gaga",
-                    "",
-                    timestamp(), [
-                        ["ladygaga-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", '', false, false, timestamp()],
-                        ["ladygaga-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", 'http://ladygaga.com', false, false, timestamp()],
-                    ]
-                ),
-                Zuck.buildTimelineItem(
-                    "starboy",
-                    "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/4.jpg",
-                    "The Weeknd",
-                    "",
-                    timestamp(), [
-                        ["starboy-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", '', false, false, timestamp()]
-                    ]
-                ),
-                Zuck.buildTimelineItem(
-                    "riversquomo",
-                    "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/5.jpg",
-                    "Rivers Cuomo",
-                    "",
-                    timestamp(), [
-                        ["riverscuomo", "photo", 10, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", '', false, false, timestamp()]
+                        ["Flame-1", "photo", 4, "../img/stories/flame/about-flame-1.jpg", '', false, false, 1606951285.838, timestamp()],
+                        ["Flame-2", "photo", 4, "../img/stories/flame/about-flame-2.jpg", '', false, false, 1606951285.838, timestamp()],
+                        ["Flame-3", "photo", 4, "../img/stories/flame/about-flame-3.jpg", '', false, false, 1606951285.838, timestamp()],
+                        ["Flame-4", "photo", 4, "../img/stories/flame/about-flame-4.jpg", '', false, false, 1606951285.838, timestamp()],
+                        ["Flame-5", "photo", 4, "../img/stories/flame/about-flame-5.jpg", '', false, false, 1606951285.838, timestamp()]
                     ]
                 )
+                // ,
+                // Zuck.buildTimelineItem(
+                //     "gorillaz",
+                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/2.jpg",
+                //     "Gorillaz",
+                //     "",
+                //     timestamp(), [
+                //         ["gorillaz-1", "video", 0, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.mp4", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.jpg", '', false, false, timestamp()],
+                //         ["gorillaz-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", '', false, false, timestamp()],
+                //     ]
+                // ),
+                // Zuck.buildTimelineItem(
+                //     "ladygaga",
+                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/3.jpg",
+                //     "Lady Gaga",
+                //     "",
+                //     timestamp(), [
+                //         ["ladygaga-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", '', false, false, timestamp()],
+                //         ["ladygaga-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", 'http://ladygaga.com', false, false, timestamp()],
+                //     ]
+                // ),
+                // Zuck.buildTimelineItem(
+                //     "starboy",
+                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/4.jpg",
+                //     "The Weeknd",
+                //     "",
+                //     timestamp(), [
+                //         ["starboy-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", '', false, false, timestamp()]
+                //     ]
+                // ),
+                // Zuck.buildTimelineItem(
+                //     "riversquomo",
+                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/5.jpg",
+                //     "Rivers Cuomo",
+                //     "",
+                //     timestamp(), [
+                //         ["riverscuomo", "photo", 10, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", '', false, false, timestamp()]
+                //     ]
+
             ]
         });
 
@@ -340,3 +341,14 @@ headerBg.addEventListener('click', function() {
         menuhide()
     }
 })
+
+var menuLinks = document.querySelectorAll('.menu-item a')
+for (var i = 0; i < menuLinks.length; i++) {
+    var menuLink = menuLinks[i];
+
+    menuLink.addEventListener('click', function() {
+        if (navOuter.classList.contains('menu-show')) {
+            menuhide()
+        }
+    })
+}

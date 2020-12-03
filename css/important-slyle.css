@@ -541,6 +541,10 @@ html.wf-active {
     transform: translate(0.25rem, 0rem);
 }
 
+.btn-secondary:hover {
+    color: #141414;
+}
+
 .hero .btn-line {
     margin-top: 2.25rem;
 }
