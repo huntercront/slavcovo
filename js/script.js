@@ -40,7 +40,7 @@ Loader.prototype = {
         var self = this;
         var s = document.createElement('script');
         s.type = "text/javascript";
-        s.async = true;
+        s.defer = true;
         s.src = src;
         s.addEventListener('load', function(e) { self.loaded(e); }, false);
         var head = document.getElementsByTagName('head')[0];
@@ -245,7 +245,7 @@ l.require([
     });
 
 WebFontConfig = {
-    google: { families: ['Inter:400,600,700'] }
+    google: { families: ['Inter:400,600,700&display=swap'] }
 };
 
 
