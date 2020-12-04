@@ -273,10 +273,25 @@
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    width: 100%;
 }
 
 .holder-hide {
     z-index: -10;
+}
+
+@media(max-width:1530px) and (min-width:100px) {
+    .map-holder img {
+        width: auto;
+        height: 170%;
+    }
+}
+
+@media(min-width:1530px) {
+    .map-holder img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 [class*="ymaps-2"][class*="-ground-pane"] {
