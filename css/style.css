@@ -178,6 +178,7 @@
     display: flex;
     margin-left: -6px;
     margin-right: -6px;
+    justify-content: flex-end;
 }
 
 .details-inner {
@@ -192,9 +193,9 @@
 }
 
 .details-card {
-    flex: 0 0 16.6666%;
+    flex: 0 0 20%;
     width: 100%;
-    max-width: 16.6666%;
+    max-width: 180px;
     padding: 0 6px;
 }
 
@@ -211,6 +212,9 @@
 }
 
 @media (max-width:1200px) {
+    .details {
+        justify-content: flex-start;
+    }
     .cont-wraper {
         display: flex;
         justify-content: flex-start;
@@ -229,13 +233,13 @@
     }
 }
 
-@media (max-width:932px) {
+@media (max-width:866px) {
     .details-scroll {
         padding: 0;
         overflow-x: scroll;
     }
     .details-card {
-        min-width: 154px;
+        min-width: 166px;
         flex: 0 0 154px;
         margin-bottom: 1rem;
     }
