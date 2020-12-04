@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/nulled.css">
-    <link rel="stylesheet" href="./css/important-slyle.css">
+    <link rel="stylesheet" rel="preload" href="./css/important-slyle.css">
     <link rel="stylesheet" href="./css/style.css" media="print" async onload="this.media='all'">
     <link rel="stylesheet" href="./css/story-css.css" media="print" async onload="this.media='all'">
 
@@ -331,7 +331,13 @@
                             <div class="map-address"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                 <span class="descr descr-s">Тверская область, Кашинский г.о., с. Славково</span>
                             </div>
-                            <div id="map" class="map"></div>
+                            <div id="map" class="map">
+                                <picture class="map-holder">
+                                    <source srcset="" data-srcset="./img/map/map-prew.webp" type="image/webp">
+
+                                    <img class="lazy" alt="Карта" src="./img/map/map-prew.jpg" />
+                                </picture>
+                            </div>
                         </div>
 
                     </div>

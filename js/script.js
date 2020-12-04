@@ -1,23 +1,17 @@
-// WebFontConfig = {
-//     google: { families: ['Inter:400,600,700'] }
-// };
+WebFontConfig = {
+    google: { families: ['Inter:400,600,700'] }
+};
 
-// (function(d) {
-//     var wf = d.createElement('script'),
-//         s = d.scripts[0];
-//     wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-//     wf.async = true;
-//     s.parentNode.insertBefore(wf, s);
-// })(document);
+(function(d) {
+    var wf = d.createElement('script'),
+        s = d.scripts[0];
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+    wf.async = true;
+    s.parentNode.insertBefore(wf, s);
+})(document);
 
-// (function(d) {
-//     var st = d.createElement('script'),
-//         s = d.scripts[0];
-//     st.src = '../js/zuck.min.js';
-//     st.async = true;
-//     s.parentNode.insertBefore(st, s);
-// })(document);
 
+setTimeout(function() {}, 500)
 
 
 var Loader = function() {}
@@ -48,205 +42,233 @@ Loader.prototype = {
     }
 }
 
-var l = new Loader();
-l.require([
-        "../js/scroll.js",
-        "../js/zuck.min.js",
-        "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js",
-        "https://api-maps.yandex.ru/2.1/?apikey=93fece7a-9fe4-47c6-80de-eaea41ec7d4a&lang=ru_RU"
-    ],
-    function() {
+
+setTimeout(function() {
+    var l = new Loader();
+    l.require([
+            "../js/scroll.js",
+            "../js/zuck.min.js",
+            "https://api-maps.yandex.ru/2.1/?apikey=93fece7a-9fe4-47c6-80de-eaea41ec7d4a&lang=ru_RU"
+        ],
+        function() {
 
 
-        var timestamp = function() {
-            var timeIndex = 0;
-            var shifts = [35, 60, 60 * 3, 60 * 60 * 2, 60 * 60 * 25, 60 * 60 * 24 * 4, 60 * 60 * 24 * 10];
+            var timestamp = function() {
+                var timeIndex = 0;
+                var shifts = [35, 60, 60 * 3, 60 * 60 * 2, 60 * 60 * 25, 60 * 60 * 24 * 4, 60 * 60 * 24 * 10];
 
-            var now = new Date();
-            var shift = shifts[timeIndex++] || 0;
-            var date = new Date(now - shift * 1000);
+                var now = new Date();
+                var shift = shifts[timeIndex++] || 0;
+                var date = new Date(now - shift * 1000);
 
-            return date.getTime() / 1000;
-        };
-
-
-
-        var getCurrentSkin = function() {
-
-            var skin = location.href.split('skin=')[1];
-
-            if (!skin) {
-                skin = 'Snapgram';
-            }
-
-            if (skin.indexOf('#') !== -1) {
-                skin = skin.split('#')[0];
-            }
-
-            var skins = {
-                Snapgram: {
-                    avatars: true,
-                    list: false,
-                    autoFullScreen: false,
-                    cubeEffect: true,
-                    paginationArrows: false
-                },
-
-                VemDeZAP: {
-                    avatars: false,
-                    list: true,
-                    autoFullScreen: false,
-                    cubeEffect: false,
-                    paginationArrows: true
-                },
-
-                FaceSnap: {
-                    avatars: true,
-                    list: false,
-                    autoFullScreen: true,
-                    cubeEffect: false,
-                    paginationArrows: true
-                },
-
-                Snapssenger: {
-                    avatars: false,
-                    list: false,
-                    autoFullScreen: false,
-                    cubeEffect: false,
-                    paginationArrows: false
-                }
+                return date.getTime() / 1000;
             };
 
-            var el = document.querySelectorAll('#skin option');
-            var total = el.length;
-            for (var i = 0; i < total; i++) {
-                var what = skin == el[i].value ? true : false;
 
-                if (what) {
-                    el[i].setAttribute('selected', 'selected');
 
-                    header.innerHTML = skin;
-                    header.className = skin;
-                } else {
-                    el[i].removeAttribute('selected');
+            var getCurrentSkin = function() {
+
+                var skin = location.href.split('skin=')[1];
+
+                if (!skin) {
+                    skin = 'Snapgram';
                 }
-            }
 
-            return {
-                name: skin,
-                params: skins[skin]
+                if (skin.indexOf('#') !== -1) {
+                    skin = skin.split('#')[0];
+                }
+
+                var skins = {
+                    Snapgram: {
+                        avatars: true,
+                        list: false,
+                        autoFullScreen: false,
+                        cubeEffect: true,
+                        paginationArrows: false
+                    },
+
+                    VemDeZAP: {
+                        avatars: false,
+                        list: true,
+                        autoFullScreen: false,
+                        cubeEffect: false,
+                        paginationArrows: true
+                    },
+
+                    FaceSnap: {
+                        avatars: true,
+                        list: false,
+                        autoFullScreen: true,
+                        cubeEffect: false,
+                        paginationArrows: true
+                    },
+
+                    Snapssenger: {
+                        avatars: false,
+                        list: false,
+                        autoFullScreen: false,
+                        cubeEffect: false,
+                        paginationArrows: false
+                    }
+                };
+
+                var el = document.querySelectorAll('#skin option');
+                var total = el.length;
+                for (var i = 0; i < total; i++) {
+                    var what = skin == el[i].value ? true : false;
+
+                    if (what) {
+                        el[i].setAttribute('selected', 'selected');
+
+                        header.innerHTML = skin;
+                        header.className = skin;
+                    } else {
+                        el[i].removeAttribute('selected');
+                    }
+                }
+
+                return {
+                    name: skin,
+                    params: skins[skin]
+                };
             };
-        };
 
 
 
-        var currentSkin = getCurrentSkin();
-        var stories = new Zuck('stories', {
-            backNative: false,
-            previousTap: true,
-            skin: currentSkin['name'],
-            autoFullScreen: currentSkin['params']['autoFullScreen'],
-            paginationArrows: currentSkin['params']['paginationArrows'],
-            list: currentSkin['params']['list'],
-            cubeEffect: currentSkin['params']['cubeEffect'],
-            localStorage: true,
-            stories: [
-                Zuck.buildTimelineItem(
-                    "Flame",
-                    "../img/stories/flame/about-flame-prew.jpg",
-                    "Зана костра",
-                    "",
-                    timestamp(), [
-                        ["Flame-1", "photo", 4, "../img/stories/flame/about-flame-1.jpg", '', false, false, 1606951285.838, timestamp()],
-                        ["Flame-2", "photo", 4, "../img/stories/flame/about-flame-2.jpg", '', false, false, 1606951285.838, timestamp()],
-                        ["Flame-3", "photo", 4, "../img/stories/flame/about-flame-3.jpg", '', false, false, 1606951285.838, timestamp()],
-                        ["Flame-4", "photo", 4, "../img/stories/flame/about-flame-4.jpg", '', false, false, 1606951285.838, timestamp()],
-                        ["Flame-5", "photo", 4, "../img/stories/flame/about-flame-5.jpg", '', false, false, 1606951285.838, timestamp()]
-                    ]
-                )
-                // ,
-                // Zuck.buildTimelineItem(
-                //     "gorillaz",
-                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/2.jpg",
-                //     "Gorillaz",
-                //     "",
-                //     timestamp(), [
-                //         ["gorillaz-1", "video", 0, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.mp4", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.jpg", '', false, false, timestamp()],
-                //         ["gorillaz-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", '', false, false, timestamp()],
-                //     ]
-                // ),
-                // Zuck.buildTimelineItem(
-                //     "ladygaga",
-                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/3.jpg",
-                //     "Lady Gaga",
-                //     "",
-                //     timestamp(), [
-                //         ["ladygaga-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", '', false, false, timestamp()],
-                //         ["ladygaga-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", 'http://ladygaga.com', false, false, timestamp()],
-                //     ]
-                // ),
-                // Zuck.buildTimelineItem(
-                //     "starboy",
-                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/4.jpg",
-                //     "The Weeknd",
-                //     "",
-                //     timestamp(), [
-                //         ["starboy-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", '', false, false, timestamp()]
-                //     ]
-                // ),
-                // Zuck.buildTimelineItem(
-                //     "riversquomo",
-                //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/5.jpg",
-                //     "Rivers Cuomo",
-                //     "",
-                //     timestamp(), [
-                //         ["riverscuomo", "photo", 10, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", '', false, false, timestamp()]
-                //     ]
+            var currentSkin = getCurrentSkin();
+            var stories = new Zuck('stories', {
+                backNative: false,
+                previousTap: true,
+                skin: currentSkin['name'],
+                autoFullScreen: currentSkin['params']['autoFullScreen'],
+                paginationArrows: currentSkin['params']['paginationArrows'],
+                list: currentSkin['params']['list'],
+                cubeEffect: currentSkin['params']['cubeEffect'],
+                localStorage: true,
+                stories: [
+                    Zuck.buildTimelineItem(
+                        "Flame",
+                        "../img/stories/flame/about-flame-prew.jpg",
+                        "Зана костра",
+                        "",
+                        timestamp(), [
+                            ["Flame-1", "photo", 4, "../img/stories/flame/about-flame-1.jpg", '', false, false, 1606951285.838, timestamp()],
+                            ["Flame-2", "photo", 4, "../img/stories/flame/about-flame-2.jpg", '', false, false, 1606951285.838, timestamp()],
+                            ["Flame-3", "photo", 4, "../img/stories/flame/about-flame-3.jpg", '', false, false, 1606951285.838, timestamp()],
+                            ["Flame-4", "photo", 4, "../img/stories/flame/about-flame-4.jpg", '', false, false, 1606951285.838, timestamp()],
+                            ["Flame-5", "photo", 4, "../img/stories/flame/about-flame-5.jpg", '', false, false, 1606951285.838, timestamp()]
+                        ]
+                    )
+                    // ,
+                    // Zuck.buildTimelineItem(
+                    //     "gorillaz",
+                    //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/2.jpg",
+                    //     "Gorillaz",
+                    //     "",
+                    //     timestamp(), [
+                    //         ["gorillaz-1", "video", 0, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.mp4", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/4.jpg", '', false, false, timestamp()],
+                    //         ["gorillaz-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/5.jpg", '', false, false, timestamp()],
+                    //     ]
+                    // ),
+                    // Zuck.buildTimelineItem(
+                    //     "ladygaga",
+                    //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/3.jpg",
+                    //     "Lady Gaga",
+                    //     "",
+                    //     timestamp(), [
+                    //         ["ladygaga-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/6.jpg", '', false, false, timestamp()],
+                    //         ["ladygaga-2", "photo", 3, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/7.jpg", 'http://ladygaga.com', false, false, timestamp()],
+                    //     ]
+                    // ),
+                    // Zuck.buildTimelineItem(
+                    //     "starboy",
+                    //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/4.jpg",
+                    //     "The Weeknd",
+                    //     "",
+                    //     timestamp(), [
+                    //         ["starboy-1", "photo", 5, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/8.jpg", '', false, false, timestamp()]
+                    //     ]
+                    // ),
+                    // Zuck.buildTimelineItem(
+                    //     "riversquomo",
+                    //     "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/users/5.jpg",
+                    //     "Rivers Cuomo",
+                    //     "",
+                    //     timestamp(), [
+                    //         ["riverscuomo", "photo", 10, "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", "https://raw.githubusercontent.com/ramon82/assets/master/zuck.js/stories/9.jpg", '', false, false, timestamp()]
+                    //     ]
 
-            ]
+                ]
+            });
+
         });
 
+}, 3000)
 
-        ymaps.ready(function() {
-            var myMap = new ymaps.Map('map', {
-                    center: [57.345559964846025, 37.03712280293274],
-                    zoom: 17,
-                    controls: ['zoomControl'],
-                    behaviors: ['drag']
-                }),
-
-
-                // Создаём макет содержимого.
-                MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-                    '<div style="background-color: #414141; font-weight: bold;">$[properties.iconContent]</div>'
-                ),
-
-                myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-                    hintContent: '<div class="hint-map">Тверская область, Кашинский г.о. Славково</div>',
-                }, {
-
-
-                    iconLayout: 'default#image',
-
-                    iconImageHref: '../img/map-pin.svg',
-
-                    iconImageSize: [100, 100],
-                    iconImageOffset: [-15, -15]
-                });
-
-            myMap.geoObjects
-                .add(myPlacemark)
-                // myMap.panes.get('ground').getElement().style.filter = 'grayscale(100%)';
-                // myMap.panes.get('ground').getElement().style.opacity = "0.1";
-        });
-
-
-
-    });
-
-WebFontConfig = {
-    google: { families: ['Inter:400,600,700&display=swap'] }
+let map_container = document.getElementById('map');
+let options_map = {
+    once: true, //запуск один раз, и удаление наблюдателя сразу
+    passive: true,
+    capture: true
 };
+map_container.addEventListener('click', start_lazy_map, options_map);
+map_container.addEventListener('mouseover', start_lazy_map, options_map);
+map_container.addEventListener('touchstart', start_lazy_map, options_map);
+map_container.addEventListener('touchmove', start_lazy_map, options_map);
+
+let map_loaded = false;
+let holderClose = false;
+
+function start_lazy_map() {
+    if (!map_loaded) {
+        var l = new Loader();
+        l.require([
+                "https://api-maps.yandex.ru/2.1/?apikey=93fece7a-9fe4-47c6-80de-eaea41ec7d4a&lang=ru_RU"
+            ],
+            function() {
+                ymaps.ready(function() {
+                    var myMap = new ymaps.Map('map', {
+                            center: [57.345559964846025, 37.03712280293274],
+                            zoom: 17,
+                            controls: ['zoomControl'],
+                            behaviors: ['drag']
+                        }),
+
+
+                        // Создаём макет содержимого.
+                        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                            '<div style="background-color: #414141; font-weight: bold;">$[properties.iconContent]</div>'
+                        ),
+
+                        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                            hintContent: '<div class="hint-map">Тверская область, Кашинский г.о. Славково</div>',
+                        }, {
+
+
+                            iconLayout: 'default#image',
+
+                            iconImageHref: '../img/map-pin.svg',
+
+                            iconImageSize: [100, 100],
+                            iconImageOffset: [-15, -15]
+                        });
+
+                    myMap.geoObjects
+                        .add(myPlacemark)
+                        // myMap.panes.get('ground').getElement().style.filter = 'grayscale(100%)';
+                        // myMap.panes.get('ground').getElement().style.opacity = "0.1";
+                });
+            });
+    }
+    if (!document.querySelector('.map-holder').classList.contains('holder-hide')) {
+        document.querySelector('.map-holder').classList.add('holder-hide')
+    }
+}
+
+
+
+
+
 
 
 var header = document.querySelector('.blur')
