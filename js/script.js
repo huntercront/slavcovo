@@ -47,8 +47,7 @@ setTimeout(function() {
     var l = new Loader();
     l.require([
             "../js/scroll.js",
-            "../js/zuck.min.js",
-            "https://api-maps.yandex.ru/2.1/?apikey=93fece7a-9fe4-47c6-80de-eaea41ec7d4a&lang=ru_RU"
+            "../js/zuck.min.js"
         ],
         function() {
 

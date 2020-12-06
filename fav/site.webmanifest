@@ -1,0 +1,19 @@
+{
+    "name": "\u041a\u043e\u0442\u0442\u0435\u0434\u0436 \u0421\u043b\u0430\u0432\u043a\u043e\u0432\u043e",
+    "short_name": "\u041a\u043e\u0442\u0442\u0435\u0434\u0436 \u0421\u043b\u0430\u0432\u043a\u043e\u0432\u043e",
+    "icons": [{
+            "src": "/fav/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/fav/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#f3ede9",
+    "background_color": "#f3ede9",
+    "start_url": "https://slavkovo-house.ru",
+    "display": "standalone"
+}
